@@ -14,7 +14,7 @@ from flask_socketio import SocketIO
 
 def create_view(app):
     socketio = SocketIO(app, cors_allowed_origins="*")
-    socketio.run(app, host='0.0.0.0', port=5000, debug=True)
+    app.socketio = socketio
     @socketio.on('message')
     def handle_message(data):
         message = data['message']

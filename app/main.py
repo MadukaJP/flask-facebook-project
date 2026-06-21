@@ -18,7 +18,7 @@ def create_app():
     app.config["UPLOAD_PATH"] = "static/images/uploads"
     app.config['SECRET_KEY'] = "weertyuijkopl"
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{os.path.join(basedir, 'data.sqlite')}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(basedir, 'data.sqlite')}"
     app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False 
 
     db.init_app(app)
@@ -35,6 +35,7 @@ def create_app():
 
 if __name__ == '__main__':
     app = create_app()
+    app.socketio.run(app, host='0.0.0.0', port=5000, debug=True)
 
 
     
